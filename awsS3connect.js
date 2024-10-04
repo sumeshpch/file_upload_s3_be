@@ -43,6 +43,7 @@ exports.getListFromAws = async () => {
     try {
         return await s3.listObjectsV2(listParams).promise();
     } catch (err) {
+        console.log(err);
         return {Contents: null, message: 'Please try later'};
     }
 };

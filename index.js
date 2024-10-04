@@ -3,7 +3,7 @@ const multer = require('multer');
 const cors = require('cors');
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT;
 
 // Import the module for AWS S3 functions
 const awss3connect = require("./awsS3connect");
