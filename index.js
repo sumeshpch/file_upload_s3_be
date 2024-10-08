@@ -55,6 +55,11 @@ app.delete('/erase/:key', (req, res) => {
   });
 });
 
+// Function to serve all static files
+// inside public directory.
+app.use(express.static('public'));
+app.use('/uploads', express.static('uploads'));
+
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
