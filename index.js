@@ -11,7 +11,7 @@ const awss3connect = require("./awsS3connect");
 // Define the CORS options
 const corsOptions = {
     credentials: true,
-    origin: ['http://localhost:4200'] // Whitelist the domains you want to allow
+    origin: ['http://3.90.137.230:80', 'http://localhost:80', 'http://3.90.137.230', 'http://localhost']
 };
 app.use(cors(corsOptions));
 
@@ -59,15 +59,6 @@ app.delete('/erase/:key', (req, res) => {
 // inside public directory.
 app.use(express.static('public'));
 app.use('/uploads', express.static('uploads'));
-
-// for CORS
-app.use(function(req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    res.setHeader('Access-Control-Allow-Credentials', true);
-    next();
-});
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
