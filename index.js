@@ -60,6 +60,15 @@ app.delete('/erase/:key', (req, res) => {
 app.use(express.static('public'));
 app.use('/uploads', express.static('uploads'));
 
+// for CORS
+app.use(function(req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    next();
+});
+
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
